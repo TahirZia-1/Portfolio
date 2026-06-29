@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes | Digital IC Design & Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                        mono: ['"Fira Code"', '"JetBrains Mono"', '"Roboto Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased transition-colors duration-200 min-h-screen flex flex-col selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-800 dark:selection:text-blue-100">
+
+    <header class="w-full max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="font-bold text-xl tracking-tight text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
+            <a href="index.html">/home</a> <span class="text-gray-900 dark:text-white">/notes</span>
+        </div>
+        <nav class="flex gap-6 items-center text-sm font-medium">
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="notes.html" class="nav-link text-gray-900 dark:text-white">Notes</a>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-6 py-12">
+        <div class="mb-16 border-b border-gray-200 dark:border-slate-800 pb-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Notes & Essays</h1>
+            <p class="text-gray-600 dark:text-slate-400 max-w-2xl">
+                A collection of technical notes, "explain it to myself" articles, and observations on IC design, computer architecture, and verification methodologies.
+            </p>
+        </div>
+
+        <div class="space-y-4">
+
+            <a href="#" class="group block py-4 border-b border-gray-100 dark:border-slate-800/50 hover:bg-gray-50 dark:hover:bg-slate-800/30 transition-colors -mx-4 px-4 rounded-lg">
+                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                    <time class="text-sm font-mono text-gray-500 dark:text-slate-500 min-w-[100px]">Oct 24, 2023</time>
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Understanding Clock Domain Crossing (CDC) Structural Analysis</h2>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">CDC</span>
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">Design</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group block py-4 border-b border-gray-100 dark:border-slate-800/50 hover:bg-gray-50 dark:hover:bg-slate-800/30 transition-colors -mx-4 px-4 rounded-lg">
+                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                    <time class="text-sm font-mono text-gray-500 dark:text-slate-500 min-w-[100px]">Sep 12, 2023</time>
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Demystifying UVM Phases and Objection Mechanisms</h2>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">UVM</span>
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">Verification</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group block py-4 border-b border-gray-100 dark:border-slate-800/50 hover:bg-gray-50 dark:hover:bg-slate-800/30 transition-colors -mx-4 px-4 rounded-lg">
+                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                    <time class="text-sm font-mono text-gray-500 dark:text-slate-500 min-w-[100px]">Aug 05, 2023</time>
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">The Anatomy of a Non-Blocking Assignment</h2>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">Verilog</span>
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">RTL</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="group block py-4 border-b border-gray-100 dark:border-slate-800/50 hover:bg-gray-50 dark:hover:bg-slate-800/30 transition-colors -mx-4 px-4 rounded-lg">
+                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                    <time class="text-sm font-mono text-gray-500 dark:text-slate-500 min-w-[100px]">Jul 19, 2023</time>
+                    <div class="flex-grow">
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Setting up a minimalist Verilog development environment in Neovim</h2>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">Tools</span>
+                            <span class="text-xs font-mono px-2 py-0.5 bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-400 rounded">Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="w-full max-w-4xl mx-auto px-6 py-12 mt-auto border-t border-gray-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="text-sm text-gray-500 dark:text-slate-500 font-mono">
+            &copy; <script>document.write(new Date().getFullYear())</script> IC Engineer Portfolio
+        </div>
+        <div class="flex gap-6 text-sm font-medium">
+            <a href="#" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a>
+            <a href="#" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

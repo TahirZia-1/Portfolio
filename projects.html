@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Digital IC Design & Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                        mono: ['"Fira Code"', '"JetBrains Mono"', '"Roboto Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Prism.js Core & Theme -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+</head>
+<body class="antialiased transition-colors duration-200 min-h-screen flex flex-col selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-800 dark:selection:text-blue-100">
+
+    <header class="w-full max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="font-bold text-xl tracking-tight text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
+            <a href="index.html">/home</a> <span class="text-gray-900 dark:text-white">/projects</span>
+        </div>
+        <nav class="flex gap-6 items-center text-sm font-medium">
+            <a href="projects.html" class="nav-link text-gray-900 dark:text-white">Projects</a>
+            <a href="notes.html" class="nav-link">Notes</a>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-6 py-12">
+        <div class="mb-16 border-b border-gray-200 dark:border-slate-800 pb-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Technical Projects</h1>
+            <p class="text-gray-600 dark:text-slate-400 max-w-2xl">
+                Deep dives into hardware design and verification. Emphasizing clean architecture, comprehensive testbenches, and verifiable correctness.
+            </p>
+        </div>
+
+        <div class="space-y-24">
+
+            <!-- Project 1: Async FIFO -->
+            <article class="project-entry">
+                <header class="mb-6">
+                    <div class="flex items-center gap-3 mb-3 text-sm font-mono text-emerald-600 dark:text-emerald-400">
+                        <span>Hardware Design</span>
+                        <span>&bull;</span>
+                        <span>Verilog</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Asynchronous FIFO Design</h2>
+                    <p class="text-gray-600 dark:text-slate-400">
+                        A robust, parameterizable Asynchronous FIFO handling Clock Domain Crossing (CDC) safely using Gray code pointers and synchronizers.
+                    </p>
+                </header>
+
+                <div class="prose prose-slate dark:prose-invert max-w-none">
+                    <h3 class="text-lg font-semibold mt-8 mb-4 border-b border-gray-200 dark:border-slate-700 pb-2">Architecture Block Diagram</h3>
+                    <div class="bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-md p-4 overflow-x-auto mb-8">
+<pre class="font-mono text-xs leading-tight text-gray-800 dark:text-slate-300 bg-transparent border-0 m-0 p-0">
+         +---------+                                   +---------+
+         |         |--- wdata(N-1:0) --->|   Memory    |---> rdata(N-1:0)
+  wclk ->|  Write  |                     |  (DPRAM)    |
+ winc  ->| Control |--- waddr(M-1:0) --->|             |<--- raddr(M-1:0) <- rclk
+         |         |--- wclken --------->|             |<- rinc
+         +---------+                     +---------+   |
+           |     ^                                     ^     |
+       wptr|     |wq2_rptr                             |rptr |rq2_wptr
+           v     |                                     |     v
+         +---------+                                   +---------+
+         | Sync to |<---------- rptr(Gray) ------------| Sync to |
+         |  wclk   |                                   |  rclk   |
+         +---------+                                   +---------+
+         |         |                                   |         |
+         | wfull   |                                   | rempty  |
+         +---------+                                   +---------+
+</pre>
+                    </div>
+
+                    <h3 class="text-lg font-semibold mt-8 mb-4 border-b border-gray-200 dark:border-slate-700 pb-2">Key Implementation Details</h3>
+                    <p class="text-gray-600 dark:text-slate-400 mb-4">
+                        The design ensures safe data transfer across independent clock domains by converting binary pointers to Gray code before passing them through a 2-stage synchronizer flip-flop chain. This prevents multi-bit transition errors during CDC.
+                    </p>
+
+                    <h3 class="text-lg font-semibold mt-8 mb-4 border-b border-gray-200 dark:border-slate-700 pb-2">Verilog Implementation Snippet</h3>
+                    <p class="text-sm text-gray-500 dark:text-slate-400 mb-2">Binary to Gray Code Conversion and Pointer Logic:</p>
+<pre><code class="language-verilog">
+module wptr_full #(parameter ADDRSIZE = 4) (
+    output reg wfull,
+    output     [ADDRSIZE:0] wptr,
+    output reg [ADDRSIZE:0] wq2_rptr,
+    input      [ADDRSIZE:0] rq2_wptr,
+    input      winc, wclk, wrst_n
+);
+
+    reg  [ADDRSIZE:0] wbin;
+    wire [ADDRSIZE:0] wgraynext, wbinnext;
+    wire wfull_val;
+
+    // Binary pointer next state
+    assign wbinnext  = wbin + (winc & ~wfull);
+
+    // Gray pointer next state
+    assign wgraynext = (wbinnext >> 1) ^ wbinnext;
+
+    // Pointer update
+    always @(posedge wclk or negedge wrst_n) begin
+        if (!wrst_n) {wbin, wptr} <= 0;
+        else         {wbin, wptr} <= {wbinnext, wgraynext};
+    end
+
+    // Full condition logic (MSB !=, 2nd MSB !=, rest ==)
+    assign wfull_val = (wgraynext == {~wq2_rptr[ADDRSIZE:ADDRSIZE-1],
+                                       wq2_rptr[ADDRSIZE-2:0]});
+
+    always @(posedge wclk or negedge wrst_n) begin
+        if (!wrst_n) wfull <= 1'b0;
+        else         wfull <= wfull_val;
+    end
+endmodule
+</code></pre>
+                </div>
+            </article>
+
+            <!-- Project 2: UVM TB -->
+            <article class="project-entry">
+                <header class="mb-6">
+                    <div class="flex items-center gap-3 mb-3 text-sm font-mono text-blue-600 dark:text-blue-400">
+                        <span>Verification</span>
+                        <span>&bull;</span>
+                        <span>SystemVerilog / UVM</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">ALU Block-Level UVM Testbench</h2>
+                    <p class="text-gray-600 dark:text-slate-400">
+                        A comprehensive Universal Verification Methodology (UVM) testbench designed to exhaustively verify an Arithmetic Logic Unit using constrained-random stimuli and functional coverage.
+                    </p>
+                </header>
+
+                <div class="prose prose-slate dark:prose-invert max-w-none">
+                    <h3 class="text-lg font-semibold mt-8 mb-4 border-b border-gray-200 dark:border-slate-700 pb-2">Verification Plan & State Table</h3>
+                    <p class="text-gray-600 dark:text-slate-400 mb-4">
+                        The verification plan targets 100% functional coverage across all supported opcodes, corner cases (overflow, zero flag), and sequential operation modes.
+                    </p>
+
+                    <div class="overflow-x-auto mb-8 border border-gray-200 dark:border-slate-700 rounded-lg">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-slate-200 font-mono">
+                                    <th class="p-3 border-b border-r border-gray-200 dark:border-slate-700">Opcode [3:0]</th>
+                                    <th class="p-3 border-b border-r border-gray-200 dark:border-slate-700">Operation</th>
+                                    <th class="p-3 border-b border-gray-200 dark:border-slate-700">Coverage Target focus</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 dark:text-slate-400 font-mono">
+                                <tr class="border-b border-gray-200 dark:border-slate-700">
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">0000</td>
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">ADD</td>
+                                    <td class="p-3">MAX_VAL + 1 (Overflow), Negative + Positive</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 dark:border-slate-700">
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">0001</td>
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">SUB</td>
+                                    <td class="p-3">A < B (Negative result), MIN_VAL - 1 (Underflow)</td>
+                                </tr>
+                                <tr class="border-b border-gray-200 dark:border-slate-700">
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">0100</td>
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">AND</td>
+                                    <td class="p-3">Walking 1s, Walking 0s, All 0s, All 1s</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">1000</td>
+                                    <td class="p-3 border-r border-gray-200 dark:border-slate-700">SHIFT_L</td>
+                                    <td class="p-3">Shift by 0, Shift by MAX_WIDTH, Shift out 1s</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 class="text-lg font-semibold mt-8 mb-4 border-b border-gray-200 dark:border-slate-700 pb-2">UVM Sequence Item & Constraints</h3>
+                    <p class="text-gray-600 dark:text-slate-400 mb-4">
+                        Defining the transaction level model with constraints to hit corner cases effectively.
+                    </p>
+<pre><code class="language-systemverilog">
+class alu_seq_item extends uvm_sequence_item;
+
+  // Randomize transaction variables
+  rand bit [31:0] a;
+  rand bit [31:0] b;
+  rand bit [3:0]  opcode;
+
+  // Output variables (not randomized)
+  bit [31:0]      result;
+  bit             zero_flag;
+  bit             carry_flag;
+
+  // UVM Factory Registration
+  `uvm_object_utils_begin(alu_seq_item)
+    `uvm_field_int(a, UVM_ALL_ON)
+    `uvm_field_int(b, UVM_ALL_ON)
+    `uvm_field_int(opcode, UVM_ALL_ON)
+    `uvm_field_int(result, UVM_ALL_ON)
+  `uvm_object_utils_end
+
+  function new(string name = "alu_seq_item");
+    super.new(name);
+  endfunction
+
+  // Constraint: Focus on addition and subtraction frequently
+  constraint op_c {
+    opcode dist {
+        4'b0000 := 30, // ADD
+        4'b0001 := 30, // SUB
+        [4'b0010:4'b1111] :/ 40 // Others
+    };
+  }
+
+  // Constraint: Generate interesting corner cases for inputs
+  constraint data_c {
+    a dist {
+        32'h0000_0000 := 10,
+        32'hFFFF_FFFF := 10,
+        [32'h0000_0001:32'hFFFF_FFFE] :/ 80
+    };
+  }
+endclass
+</code></pre>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="w-full max-w-4xl mx-auto px-6 py-12 mt-auto border-t border-gray-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="text-sm text-gray-500 dark:text-slate-500 font-mono">
+            &copy; <script>document.write(new Date().getFullYear())</script> IC Engineer Portfolio
+        </div>
+        <div class="flex gap-6 text-sm font-medium">
+            <a href="#" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a>
+            <a href="#" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <!-- Prism.js Scripts for Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-verilog.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-systemverilog.min.js"></script>
+</body>
+</html>

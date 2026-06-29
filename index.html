@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Digital IC Design & Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                        mono: ['"Fira Code"', '"JetBrains Mono"', '"Roboto Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts for Inter and Roboto Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased transition-colors duration-200 min-h-screen flex flex-col selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-800 dark:selection:text-blue-100">
+
+    <header class="w-full max-w-4xl mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="font-bold text-xl tracking-tight">
+            <a href="index.html">/home</a>
+        </div>
+        <nav class="flex gap-6 items-center text-sm font-medium">
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="notes.html" class="nav-link">Notes</a>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle Dark Mode">
+                <!-- Moon icon for light mode (shows when dark mode is off) -->
+                <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+                <!-- Sun icon for dark mode (shows when dark mode is on) -->
+                <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section class="mb-20">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Digital IC Design & <br class="hidden sm:block"/> Verification Engineer</h1>
+            <p class="text-lg md:text-xl text-gray-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-8">
+                Computer Engineering graduate with specialized training from GIKI. Focused on building robust hardware architectures and ensuring their flawless execution through rigorous verification methodologies.
+            </p>
+            <div class="flex gap-4">
+                <a href="#contact" class="px-5 py-2.5 bg-gray-900 dark:bg-slate-100 text-white dark:text-slate-900 rounded-md font-medium hover:bg-gray-800 dark:hover:bg-white transition-colors">Get in touch</a>
+                <a href="projects.html" class="px-5 py-2.5 border border-gray-300 dark:border-slate-700 rounded-md font-medium hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">View technical work</a>
+            </div>
+        </section>
+
+        <!-- Expertise Matrix -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <span class="text-blue-500 mr-3">#</span> Expertise Matrix
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Hardware Design -->
+                <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800/50 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 font-mono text-gray-800 dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">Hardware Design</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-slate-400">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-emerald-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">RTL Design:</strong> Verilog, SystemVerilog</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-emerald-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Architecture:</strong> Computer Architecture, Microarchitecture Design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-emerald-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Logic Design:</strong> Finite State Machines (FSMs), Datapath & Control</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-emerald-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Concepts:</strong> Pipelining, CDC, Memory Hierarchies</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Verification -->
+                <div class="border border-gray-200 dark:border-slate-700 rounded-lg p-6 bg-white dark:bg-slate-800/50 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 font-mono text-gray-800 dark:text-slate-200 border-b border-gray-200 dark:border-slate-700 pb-2">Verification</h3>
+                    <ul class="space-y-3 text-gray-600 dark:text-slate-400">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Languages:</strong> SystemVerilog for Verification</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Methodologies:</strong> UVM (Universal Verification Methodology), OVM</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Techniques:</strong> Constrained-Random Verification, Coverage-Driven Verification</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span><strong class="text-gray-900 dark:text-slate-200">Components:</strong> Testbenches, Scoreboards, Monitors, Agents</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Brief -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="text-blue-500 mr-3">#</span> Education & Training
+            </h2>
+            <div class="border-l-2 border-gray-200 dark:border-slate-700 pl-6 py-1">
+                <div class="mb-6 relative">
+                    <div class="absolute w-3 h-3 bg-gray-300 dark:bg-slate-600 rounded-full -left-[1.68rem] top-1.5 border-2 border-white dark:border-slate-900"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-slate-100">Specialized Training in Digital IC Design & Verification</h3>
+                    <div class="text-sm text-gray-500 dark:text-slate-400 font-mono mb-2">GIKI (Ghulam Ishaq Khan Institute)</div>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">Rigorous coursework and practical labs focusing on advanced RTL design, computer architecture, and industry-standard verification techniques using SystemVerilog and UVM.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute w-3 h-3 bg-gray-300 dark:bg-slate-600 rounded-full -left-[1.68rem] top-1.5 border-2 border-white dark:border-slate-900"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-slate-100">Bachelor of Science in Computer Engineering</h3>
+                    <div class="text-sm text-gray-500 dark:text-slate-400 font-mono mb-2">University Name (Placeholder)</div>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">Foundational engineering principles, programming, digital logic design, and embedded systems.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="w-full max-w-4xl mx-auto px-6 py-12 mt-auto border-t border-gray-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="text-sm text-gray-500 dark:text-slate-500 font-mono">
+            &copy; <script>document.write(new Date().getFullYear())</script> IC Engineer Portfolio
+        </div>
+        <div class="flex gap-6 text-sm font-medium">
+            <a href="#" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a>
+            <a href="#" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">LinkedIn</a>
+            <a href="mailto:hello@example.com" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-colors">Email</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
