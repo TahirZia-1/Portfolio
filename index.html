@@ -49,9 +49,10 @@
             <a href="index.html">/home</a>
         </div>
         <nav class="flex gap-4 sm:gap-6 items-center text-sm font-medium">
-            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html#projects" class="nav-link">Projects</a>
             <a href="notes.html" class="nav-link">Notes</a>
-            <a href="https://tahirzia-1.github.io/Portfolio/TahirZia-CV.pdf" target="_blank" class="nav-link">CV</a>
+            <a href="TahirZia-CV.pdf" target="_blank" class="nav-link">CV</a>
             <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition-all duration-300 ease-in-out" aria-label="Toggle Dark Mode">
                 <!-- Moon icon for light mode (shows when dark mode is off) -->
                 <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,99 +161,6 @@
             </div>
         </section>
 
-        <!-- Notes Section -->
-        <section class="mb-16 sm:mb-20">
-            <h2 class="text-xl sm:text-2xl font-bold mb-5 sm:mb-6 flex items-center">
-                <span class="text-blue-500 mr-2 sm:mr-3">#</span> Technical Notes
-            </h2>
-
-            <div class="grid gap-6 sm:gap-8">
-                <!-- Note 1 -->
-                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">Setup & Hold Time Violations</h3>
-                        <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">Digital Logic & Timing Analysis</span>
-                    </div>
-                    <div class="space-y-4 text-sm sm:text-base text-gray-800 dark:text-slate-400">
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">What are Setup & Hold Times?</h4>
-                            <ul class="list-disc pl-5 mt-1 space-y-1">
-                                <li><strong>Setup Time:</strong> Minimum duration the data signal must remain stable BEFORE the active clock edge.</li>
-                                <li><strong>Hold Time:</strong> Minimum duration the data signal must remain stable AFTER the active clock edge.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Violations & Fixes:</h4>
-                            <ul class="list-disc pl-5 mt-1 space-y-1">
-                                <li><strong>Setup Violation (Data too slow):</strong> Caused by long combinational path delays or high clock frequency. Fix by pipelining critical paths or reducing clock frequency.</li>
-                                <li><strong>Hold Violation (Data too fast):</strong> Caused by short combinational paths overwriting data too early. Fix by inserting delay buffers along the data path (cannot be fixed by changing clock frequency).</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Clock Domain Crossing (CDC) & Metastability:</h4>
-                            <ul class="list-disc pl-5 mt-1 space-y-1">
-                                <li>Crossing asynchronous clock domains inevitably violates setup/hold times at destination registers, causing metastability.</li>
-                                <li><strong>Fix:</strong> Use a 2-stage Flip-Flop Synchronizer (2-FF) to allow metastable signals time to settle before downstream logic samples them.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Note 2 -->
-                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">Common Verilog Pitfalls: Unintended Latches</h3>
-                        <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">RTL Design & Verilog</span>
-                    </div>
-                    <div class="space-y-4 text-sm sm:text-base text-gray-800 dark:text-slate-400">
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">The Problem:</h4>
-                            <p class="mt-1">In combinational blocks (<code>always_comb</code>), if an output variable is not assigned a value in every possible execution path (e.g., missing else branches or incomplete case statements), the synthesis tool infers a hardware LATCH to hold its previous value. Latches waste area, introduce timing issues, and create glitched feedback paths.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Incorrect Code (Infers Latch):</h4>
-<pre><code class="language-verilog">always_comb begin
-    if (enable) begin
-        out = data_in;
-    end
-    // Latch inferred! 'out' must hold value when enable == 0
-end</code></pre>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Correct Code (Default Assignment):</h4>
-<pre><code class="language-verilog">always_comb begin
-    out = 1'b0; // Default assignment prevents latch inference
-    if (enable) begin
-        out = data_in;
-    end
-end</code></pre>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Note 3 -->
-                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">Asynchronous FIFO & Clock Domain Crossing (CDC)</h3>
-                        <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">Computer Architecture & CDC</span>
-                    </div>
-                    <div class="space-y-4 text-sm sm:text-base text-gray-800 dark:text-slate-400">
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">The Challenge:</h4>
-                            <p class="mt-1">An Asynchronous FIFO passes data between independent clock domains (Write Clock vs. Read Clock). Read and Write pointers must be compared across domains to check for Full or Empty conditions.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Why Binary Pointers Fail:</h4>
-                            <p class="mt-1">Multi-bit binary counters toggle multiple bits simultaneously (e.g., <code>3'b011</code> to <code>3'b100</code> toggles 3 bits). If the destination clock samples during a transition, intermediate metastable states (like <code>3'b111</code> or <code>3'b000</code>) cause false Full/Empty triggers or data corruption.</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">The Solution: Gray Code Encoding:</h4>
-                            <p class="mt-1">Gray Code guarantees that ONLY ONE bit changes on any single increment (e.g., <code>2'b01</code> -> <code>2'b11</code> -> <code>2'b10</code>). Passing Gray Code pointers through a 2-FF synchronizer ensures the receiving domain samples either the valid old pointer or valid new pointer—never a corrupted intermediate state.</p>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
     </main>
 
     <footer id="contact" class="w-full max-w-4xl mx-auto px-4 sm:px-8 py-8 sm:py-12 mt-auto border-t border-gray-200 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -260,10 +168,10 @@ end</code></pre>
             &copy; <script>document.write(new Date().getFullYear())</script> Muhammad Tahir Zia
         </div>
         <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium">
-            <a href="https://github.com/TahirZia-1/" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">GitHub</a>
-            <a href="https://www.linkedin.com/in/muhammad-tahir-zia-6138592a9" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">LinkedIn</a>
-            <a href="mailto:itstahir256@gmail.com" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Email</a>
-            <a href="https://tahirzia-1.github.io/Portfolio/TahirZia-CV.pdf" target="_blank" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">CV</a>
+            <a href="index.html" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Home</a>
+            <a href="index.html#projects" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Projects</a>
+            <a href="notes.html" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Notes</a>
+            <a href="TahirZia-CV.pdf" target="_blank" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">CV</a>
         </div>
     </footer>
 
