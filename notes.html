@@ -72,9 +72,9 @@
                 <span class="text-blue-500 mr-2 sm:mr-3">#</span> Technical Notes & Engineering Insights
             </h2>
 
-            <div class="grid gap-6 sm:gap-8">
+            <div class="grid gap-6 sm:gap-8 w-full max-w-full">
                 <!-- Note 1 -->
-                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
+                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out min-w-0 w-full">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">Setup & Hold Time Violations</h3>
                         <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">Digital Logic & Timing Analysis</span>
@@ -105,7 +105,7 @@
                 </article>
 
                 <!-- Note 2 -->
-                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
+                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out min-w-0 w-full">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">Common Verilog Pitfalls: Unintended Latches</h3>
                         <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">RTL Design & Verilog</span>
@@ -117,7 +117,7 @@
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-900 dark:text-slate-200">Incorrect Code (Infers Latch):</h4>
-<pre class="overflow-x-auto max-w-full whitespace-pre-wrap break-words"><code class="language-verilog max-w-full break-words">always_comb begin
+<pre class="overflow-x-auto max-w-full rounded-md"><code class="language-verilog inline-block min-w-full">always_comb begin
     if (enable) begin
         out = data_in;
     end
@@ -126,7 +126,7 @@ end</code></pre>
                         </div>
                         <div>
                             <h4 class="font-semibold text-gray-900 dark:text-slate-200">Correct Code (Default Assignment):</h4>
-<pre class="overflow-x-auto max-w-full whitespace-pre-wrap break-words"><code class="language-verilog max-w-full break-words">always_comb begin
+<pre class="overflow-x-auto max-w-full rounded-md"><code class="language-verilog inline-block min-w-full">always_comb begin
     out = 1'b0; // Default assignment prevents latch inference
     if (enable) begin
         out = data_in;
@@ -137,7 +137,7 @@ end</code></pre>
                 </article>
 
                 <!-- Note 3 -->
-                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out">
+                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out min-w-0 w-full">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">Asynchronous FIFO & Clock Domain Crossing (CDC)</h3>
                         <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">Computer Architecture & CDC</span>
@@ -166,9 +166,9 @@ end</code></pre>
             &copy; <script>document.write(new Date().getFullYear())</script> Muhammad Tahir Zia
         </div>
         <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium">
-            <a href="index.html" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Home</a>
-            <a href="https://tahirzia-1.github.io/Portfolio/projects.html" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Projects</a>
-            <a href="notes.html" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Notes</a>
+            <a href="https://github.com/TahirZia-1" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">GitHub</a>
+            <a href="https://www.linkedin.com/in/muhammad-tahir-zia-6138592a9/" target="_blank" rel="noopener noreferrer" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">LinkedIn</a>
+            <a href="mailto:itstahir256@gmail.com" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">Email</a>
             <a href="TahirZia-CV.pdf" target="_blank" class="text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white transition-all duration-300 ease-in-out">CV</a>
         </div>
     </footer>
