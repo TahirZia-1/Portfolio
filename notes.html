@@ -157,6 +157,35 @@ end</code></pre>
                         </div>
                     </div>
                 </article>
+
+                <!-- Note 4 -->
+                <article class="border border-gray-200 dark:border-slate-700 rounded-lg p-5 sm:p-6 bg-white dark:bg-slate-800/50 shadow-sm transition-all duration-300 ease-in-out min-w-0 w-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-slate-200 font-mono">UVM Basics</h3>
+                        <span class="text-xs font-mono bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded">Verification</span>
+                    </div>
+                    <div class="space-y-4 text-sm sm:text-base text-gray-800 dark:text-slate-400 break-words max-w-full">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Introduction to UVM:</h4>
+                            <p class="mt-1 break-words max-w-full">The Universal Verification Methodology (UVM) is a standardized methodology for verifying integrated circuit designs. It is built on SystemVerilog and provides a class library to build reusable and scalable testbenches.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Core Components:</h4>
+                            <ul class="list-disc pl-5 mt-1 space-y-1">
+                                <li><strong>Sequencer:</strong> Controls the flow of transactions (sequence items) to the driver.</li>
+                                <li><strong>Driver:</strong> Receives transactions from the sequencer and drives them onto the DUT interface (pin level).</li>
+                                <li><strong>Monitor:</strong> Observes the DUT interface, converts pin-level activity back into transactions, and broadcasts them via analysis ports.</li>
+                                <li><strong>Agent:</strong> Encapsulates a sequencer, driver, and monitor. Can be "active" (driving and monitoring) or "passive" (monitoring only).</li>
+                                <li><strong>Scoreboard:</strong> Receives transactions from monitors (and sometimes predictors) to check functional correctness by comparing expected vs. actual outcomes.</li>
+                                <li><strong>Environment (Env):</strong> Groups multiple agents, scoreboards, and other verification components into a cohesive unit.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-slate-200">Phased Execution:</h4>
+                            <p class="mt-1 break-words max-w-full">UVM uses a phased execution model to synchronize the construction, configuration, and execution of testbench components. Key phases include <code>build_phase</code> (top-down component creation), <code>connect_phase</code> (bottom-up port connections), and <code>run_phase</code> (time-consuming task execution).</p>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
